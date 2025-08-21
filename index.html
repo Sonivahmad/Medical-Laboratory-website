@@ -9,45 +9,143 @@
 </head>
 <body class="bg-gray-50 text-gray-900">
   <!-- Header -->
-  <header class="bg-gradient-to-r from-blue-900 via-blue-800 to-blue-600 text-white py-8 shadow-lg">
-    <div class="container mx-auto px-4 flex flex-col items-center">
+  <header class="relative bg-gradient-to-r from-blue-900 via-blue-800 to-blue-600 text-white py-8 shadow-lg overflow-hidden">
+    <!-- Animated Medical SVG Backgrounds (do not affect content alignment) -->
+<svg class="absolute left-4 top-4 w-12 h-12 opacity-90 animate-float-slow z-0" viewBox="0 0 48 48">
+  <rect x="20" y="10" width="8" height="20" rx="3" fill="#e11d48"/>
+  <rect x="22" y="5" width="4" height="10" rx="2" fill="#64748b"/>
+  <rect x="23" y="2" width="2" height="6" rx="1" fill="#0ea5e9"/>
+  <rect x="20" y="30" width="8" height="6" rx="2" fill="#fbbf24"/>
+  <rect x="22" y="36" width="4" height="6" rx="2" fill="#334155"/>
+</svg>
+<svg class="absolute right-8 bottom-8 w-10 h-10 opacity-90 animate-float-med z-0" viewBox="0 0 48 48">
+  <ellipse cx="24" cy="24" rx="14" ry="8" fill="#be123c"/>
+  <ellipse cx="24" cy="24" rx="10" ry="4" fill="#f87171"/>
+  <ellipse cx="32" cy="18" rx="4" ry="2" fill="#be123c" opacity=".7"/>
+  <ellipse cx="16" cy="30" rx="3" ry="1.5" fill="#be123c" opacity=".7"/>
+</svg>
+<svg class="absolute left-20 bottom-8 w-10 h-10 opacity-80 animate-float-fast z-0" viewBox="0 0 48 48">
+  <ellipse cx="24" cy="24" rx="10" ry="8" fill="#f1f5f9"/>
+  <ellipse cx="24" cy="24" rx="7" ry="5" fill="#a3e635"/>
+  <ellipse cx="28" cy="20" rx="2" ry="1.5" fill="#f1f5f9"/>
+  <ellipse cx="20" cy="28" rx="1.5" ry="1" fill="#f1f5f9"/>
+</svg>
+<svg class="absolute right-20 top-8 w-8 h-8 opacity-80 animate-float-med z-0" viewBox="0 0 32 32">
+  <rect x="13" y="6" width="6" height="20" rx="2" fill="#0ea5e9"/>
+  <rect x="6" y="13" width="20" height="6" rx="2" fill="#0ea5e9"/>
+</svg>
+<svg class="absolute left-1/3 bottom-8 w-10 h-10 opacity-80 animate-float-med z-0" viewBox="0 0 48 48">
+  <path d="M12 12 Q24 24 36 12" stroke="#be185d" stroke-width="3" fill="none"/>
+  <path d="M12 36 Q24 24 36 36" stroke="#be185d" stroke-width="3" fill="none"/>
+  <ellipse cx="24" cy="24" rx="3" ry="8" fill="#fbbf24" opacity=".7"/>
+</svg>
+<div class="absolute inset-0 pointer-events-none z-0">
+      <svg class="absolute animate-float-slow left-8 top-8 opacity-15" width="60" height="60" fill="none" viewBox="0 0 60 60">
+        <circle cx="30" cy="30" r="28" stroke="#fff" stroke-width="4"/>
+        <rect x="20" y="10" width="20" height="40" rx="10" fill="#38bdf8" opacity=".3"/>
+      </svg>
+      <svg class="absolute animate-float-fast right-10 top-16 opacity-15" width="48" height="48" fill="none" viewBox="0 0 48 48">
+        <rect x="8" y="8" width="32" height="32" rx="16" fill="#22d3ee" opacity=".3"/>
+        <path d="M24 12v24" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+      <svg class="absolute animate-float-med left-1/2 bottom-2 opacity-15" width="56" height="56" fill="none" viewBox="0 0 56 56">
+        <rect x="16" y="16" width="24" height="24" rx="12" fill="#f472b6" opacity=".3"/>
+        <path d="M28 20v16" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="container mx-auto px-4 flex flex-col items-center relative z-10">
       <div class="flex items-center gap-3 mb-2">
-        <img src="https://img.icons8.com/ios-filled/50/ffffff/test-tube.png" alt="Lab Logo" class="w-10 h-10"/>
-        <h1 class="text-4xl font-extrabold tracking-wide drop-shadow text-center">Rehan & Rahil Diagnostic Lab</h1>
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/test-tube.png" alt="Lab Logo" class="w-12 h-12 md:w-14 md:h-14 drop-shadow-xl animate-bounce-slow"/>
+        <h1 class="text-4xl font-extrabold tracking-wide drop-shadow text-center animate-fade-in">Rehan & Rahil Diagnostic Lab</h1>
       </div>
-      <p class="text-xl mt-1 text-center italic font-medium tracking-wide">Home Blood Sample Collection Service</p>
-      <button onclick="scrollToBooking()" class="mt-5 px-8 py-3 bg-green-500 hover:bg-green-600 rounded-full text-white font-bold shadow-lg text-lg transition-all duration-200">Book a Test</button>
+      <p class="text-xl mt-1 text-center italic font-medium tracking-wide animate-fade-in delay-100">Home Blood Sample Collection Service</p>
+      <button onclick="scrollToBooking()" class="mt-5 px-8 py-3 bg-green-500 hover:bg-green-600 rounded-full text-white font-bold shadow-lg text-lg transition-all duration-200 animate-fade-in delay-200">Book a Test</button>
     </div>
   </header>
 
   <!-- About Section -->
-  <section class="container mx-auto px-4 py-10" id="about">
-    <div class="bg-white/80 rounded-2xl shadow-xl p-8 flex flex-col md:flex-row gap-8 items-center md:items-start">
+  <section class="container mx-auto px-4 py-10 animate-fade-in" id="about">
+    <div class="bg-white card-animated fade-section rounded-2xl shadow-xl p-8 flex flex-col md:flex-row gap-8 items-center md:items-start relative overflow-hidden">
+      <!-- Animated SVGs for About Section -->
+  <svg class="absolute left-4 top-4 w-12 h-12 opacity-80 animate-float-slow z-0" viewBox="0 0 48 48"><circle cx="24" cy="24" r="20" fill="#0c4a6e" opacity=".45"/><text x="24" y="32" text-anchor="middle" font-size="28" fill="#0c4a6e" opacity=".95">🧪</text></svg>
+  <svg class="absolute right-8 bottom-8 w-10 h-10 opacity-80 animate-float-med z-0" viewBox="0 0 48 48"><rect x="8" y="8" width="32" height="32" rx="16" fill="#1e293b" opacity=".45"/><text x="24" y="32" text-anchor="middle" font-size="24" fill="#1e293b" opacity=".95">🩸</text></svg>
+  <svg class="absolute left-1/2 top-1/2 w-10 h-10 opacity-70 animate-float-fast z-0" viewBox="0 0 48 48"><rect x="8" y="8" width="32" height="32" rx="16" fill="#be185d" opacity=".45"/><text x="24" y="32" text-anchor="middle" font-size="24" fill="#be185d" opacity=".95">�</text></svg>
+      <svg class="absolute right-0 top-0 opacity-10 w-40 h-40 md:w-56 md:h-56 animate-spin-slow" viewBox="0 0 100 100"><g><circle cx="50" cy="50" r="45" stroke="#38bdf8" stroke-width="8" fill="none"/><text x="50" y="60" text-anchor="middle" font-size="32" fill="#38bdf8" opacity=".5">🩺</text></g></svg>
       <div class="flex-1">
         <h2 class="text-3xl font-bold mb-3 text-blue-900 flex items-center gap-2"><i class="fa-solid fa-flask text-blue-700"></i> About Us</h2>
         <p class="mb-4 text-lg text-gray-700">Rehan & Rahil Diagnostic Lab offers convenient, reliable, and professional home blood sample collection services. Our experienced team ensures safe and hygienic sample collection at your doorstep, making health checkups easy and stress-free. We are committed to accuracy, compassion, and your well-being.</p>
         <ul class="mb-4 text-gray-700 space-y-1">
           <li><i class="fa-solid fa-location-dot text-blue-700 mr-2"></i><span class="font-semibold">Address:</span> Mohalla Khanpura, Meerganj, Bareilly</li>
           <li><i class="fa-solid fa-phone text-blue-700 mr-2"></i><span class="font-semibold">Contact:</span> <a href="tel:7451945915" class="text-blue-700 hover:underline">7451945915</a></li>
-          <li><i class="fab fa-whatsapp text-green-600 mr-2"></i><span class="font-semibold">WhatsApp Booking:</span> <a href="https://wa.me/917451945915" target="_blank" class="text-green-600 hover:underline">917451945915</a></li>
+          <li><i class="fab fa-whatsapp text-green-600 mr-2"></i><span class="font-semibold">WhatsApp Booking:</span> <a href="https://wa.me/917451945915" target="_blank" rel="noopener noreferrer" class="text-green-600 hover:underline">7451945915</a></li>
         </ul>
         <div class="flex gap-3 mt-2">
           <span class="inline-flex items-center gap-1 text-sm text-gray-600"><i class="fa-solid fa-clock text-blue-700"></i> 7:00 AM - 9:00 PM</span>
           <span class="inline-flex items-center gap-1 text-sm text-gray-600"><i class="fa-solid fa-calendar-days text-blue-700"></i> All Days</span>
         </div>
       </div>
-      <div class="flex-1 flex justify-center">
-        <img src="https://img.freepik.com/free-vector/medical-laboratory-concept-illustration_114360-2146.jpg?w=400" alt="Lab Illustration" class="rounded-xl shadow-lg w-full max-w-xs md:max-w-sm"/>
+      <div class="flex-1 flex justify-center relative">
+        <img src="https://img.freepik.com/free-vector/medical-laboratory-concept-illustration_114360-2146.jpg?w=400" alt="Lab Illustration" class="rounded-xl shadow-lg w-full max-w-xs md:max-w-sm animate-fade-in delay-200"/>
+        <svg class="absolute left-0 bottom-0 opacity-20 w-24 h-24 animate-float-slow" viewBox="0 0 100 100"><g><rect x="30" y="30" width="40" height="40" rx="10" fill="#22d3ee"/><text x="50" y="60" text-anchor="middle" font-size="32" fill="#fff" opacity=".7">💉</text></g></svg>
       </div>
     </div>
   </section>
+<style>
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-18px); }
+}
+.animate-float-slow { animation: float-slow 6s ease-in-out infinite; }
+.animate-float-med { animation: float-slow 4s ease-in-out infinite; }
+.animate-float-fast { animation: float-slow 2.5s ease-in-out infinite; }
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in { animation: fade-in 1.1s cubic-bezier(.4,0,.2,1) both; }
+.animate-fade-in.delay-100 { animation-delay: .1s; }
+.animate-fade-in.delay-200 { animation-delay: .2s; }
+@keyframes spin-slow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.animate-spin-slow { animation: spin-slow 18s linear infinite; }
+/* Professional color accents and hover/focus/active animations */
+.card-animated {
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0e7ff 100%);
+  box-shadow: 0 4px 24px 0 rgba(56,189,248,0.08), 0 1.5px 6px 0 rgba(59,130,246,0.08);
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+.card-animated:hover, .card-animated:focus-within {
+  box-shadow: 0 8px 32px 0 rgba(56,189,248,0.18), 0 3px 12px 0 rgba(59,130,246,0.18);
+  transform: translateY(-4px) scale(1.02);
+}
+.btn-animated {
+  background: linear-gradient(90deg, #22d3ee 0%, #38bdf8 100%);
+  box-shadow: 0 2px 8px 0 rgba(34,211,238,0.12);
+  transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+}
+.btn-animated:hover, .btn-animated:focus {
+  background: linear-gradient(90deg, #38bdf8 0%, #22d3ee 100%);
+  box-shadow: 0 4px 16px 0 rgba(34,211,238,0.18);
+  transform: scale(1.04);
+}
+.fade-section {
+  animation: fade-in 1.2s cubic-bezier(.4,0,.2,1) both;
+}
+</style>
 
   <!-- Available Tests Section -->
   <section class="container mx-auto px-4 py-10" id="tests">
     <div class="mb-4">
       <input type="text" id="testSearch" placeholder="Search tests..." class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" />
     </div>
-    <div id="testAccordion">
+    <div class="relative">
+      <!-- Animated SVGs for Tests Section -->
+  <svg class="absolute left-2 top-2 w-10 h-10 opacity-80 animate-float-fast z-0" viewBox="0 0 48 48"><rect x="8" y="8" width="32" height="32" rx="16" fill="#0f172a" opacity=".45"/><text x="24" y="32" text-anchor="middle" font-size="24" fill="#0f172a" opacity=".95">💊</text></svg>
+  <svg class="absolute right-2 bottom-2 w-12 h-12 opacity-80 animate-float-slow z-0" viewBox="0 0 48 48"><circle cx="24" cy="24" r="20" fill="#0ea5e9" opacity=".45"/><text x="24" y="32" text-anchor="middle" font-size="28" fill="#0ea5e9" opacity=".95">🩻</text></svg>
+  <svg class="absolute left-1/3 bottom-8 w-10 h-10 opacity-70 animate-float-med z-0" viewBox="0 0 48 48"><rect x="8" y="8" width="32" height="32" rx="16" fill="#be185d" opacity=".45"/><text x="24" y="32" text-anchor="middle" font-size="24" fill="#be185d" opacity=".95">�</text></svg>
+      <div id="testAccordion" class="bg-white card-animated">
       <!-- Accordions will be rendered by JS -->
     </div>
 </body>
@@ -152,7 +250,11 @@ document.getElementById('testSearch').addEventListener('input', function() {
   <!-- Booking Form Section -->
   <section class="container mx-auto px-4 py-10" id="booking">
     <h2 class="text-3xl font-bold mb-8 text-blue-900 flex items-center gap-2"><i class="fa-solid fa-calendar-check text-blue-700"></i> Book a Test</h2>
-    <form id="bookingForm" class="bg-white/90 rounded-2xl shadow-xl p-8 max-w-lg mx-auto space-y-5 border border-blue-100">
+    <form id="bookingForm" class="bg-white card-animated fade-section rounded-2xl shadow-xl p-8 max-w-lg mx-auto space-y-5 border border-blue-100 relative overflow-hidden">
+      <!-- Animated SVGs for Booking Form -->
+  <svg class="absolute left-2 top-2 w-8 h-8 opacity-80 animate-float-fast z-0" viewBox="0 0 32 32"><rect x="4" y="4" width="24" height="24" rx="8" fill="#0f172a" opacity=".45"/><text x="16" y="22" text-anchor="middle" font-size="16" fill="#0f172a" opacity=".95">🩺</text></svg>
+  <svg class="absolute right-2 bottom-2 w-10 h-10 opacity-80 animate-float-med z-0" viewBox="0 0 40 40"><circle cx="20" cy="20" r="16" fill="#334155" opacity=".45"/><text x="20" y="28" text-anchor="middle" font-size="20" fill="#334155" opacity=".95">🧬</text></svg>
+  <svg class="absolute right-1/3 top-8 w-8 h-8 opacity-70 animate-float-slow z-0" viewBox="0 0 32 32"><rect x="4" y="4" width="24" height="24" rx="8" fill="#be185d" opacity=".45"/><text x="16" y="22" text-anchor="middle" font-size="16" fill="#be185d" opacity=".95">�</text></svg>
       <div>
         <label class="block font-semibold mb-1 text-blue-900">Full Name</label>
         <input type="text" name="name" required placeholder="Enter your full name" class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" />
@@ -218,7 +320,7 @@ document.getElementById('testSearch').addEventListener('input', function() {
         <label class="block font-semibold mb-1 text-blue-900">Preferred Date & Time</label>
         <input type="datetime-local" name="datetime" required class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" />
       </div>
-      <button type="submit" class="w-full py-3 bg-green-500 hover:bg-green-600 rounded-full text-white font-bold text-lg shadow-lg transition">Submit & Book on WhatsApp</button>
+  <button type="submit" class="w-full py-3 rounded-full text-white font-bold text-lg shadow-lg btn-animated">Submit & Book on WhatsApp</button>
       <div id="confirmationMsg" class="hidden text-green-700 font-semibold text-center mt-4"></div>
     </form>
   </section>
@@ -227,15 +329,21 @@ document.getElementById('testSearch').addEventListener('input', function() {
   <section class="container mx-auto px-4 py-10">
     <h2 class="text-3xl font-bold mb-6 text-blue-900 flex items-center gap-2"><i class="fa-solid fa-map-location-dot text-blue-700"></i> Our Location</h2>
     <div class="rounded-2xl overflow-hidden shadow-xl border border-blue-100">
-      <iframe src="https://www.google.com/maps?q=28.4952,79.1435&z=17&output=embed" width="100%" height="320" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  <iframe src="https://www.google.com/maps?q=28.5410116,79.2074333&z=17&output=embed" width="100%" height="320" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
     <div class="mt-2 text-center text-gray-700 font-medium">Mohalla Khanpura, Meerganj, Bareilly</div>
   </section>
 
   <!-- WhatsApp Floating Button -->
-  <a href="https://wa.me/917451945915" target="_blank" class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-2xl p-4 z-50 flex items-center justify-center text-3xl animate-bounce" aria-label="Chat on WhatsApp">
-    <i class="fab fa-whatsapp"></i>
-  </a>
+  <a id="floatingWaBtn" href="#" class="fixed bottom-6 right-6 rounded-full shadow-2xl p-4 z-50 flex items-center justify-center text-3xl animate-bounce btn-animated" aria-label="Chat on WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+<script>
+document.getElementById('floatingWaBtn').addEventListener('click', function(e) {
+  e.preventDefault();
+  window.location.href = 'https://wa.me/917451945915?text=Hello%2C%20I%20would%20like%20to%20book%20a%20test.';
+});
+</script>
 
   <!-- Footer -->
   <footer class="bg-gradient-to-r from-blue-900 via-blue-800 to-blue-600 text-white text-center py-5 mt-12 shadow-inner">
@@ -293,37 +401,36 @@ document.getElementById('testSearch').addEventListener('input', function() {
       bookingSection.scrollIntoView({ behavior: 'smooth' });
     }
 
+    // Helper: get booking message for WhatsApp
+    function getBookingMsg() {
+      const name = document.querySelector('input[name="name"]').value.trim();
+      const age = document.querySelector('input[name="age"]').value.trim();
+      const phone = document.querySelector('input[name="phone"]').value.trim();
+      const address = document.querySelector('textarea[name="address"]').value.trim();
+      const checkedTests = Array.from(document.querySelectorAll('#testDropdown input[name="test"]:checked')).map(cb => cb.value);
+      const test = checkedTests.join(', ');
+      const datetime = document.querySelector('input[name="datetime"]').value;
+      return `New Booking Request\nName: ${name}\nAge: ${age}\nPhone: ${phone}\nAddress: ${address}\nTest(s): ${test}\nDate: ${datetime}`;
+    }
+
     document.getElementById('bookingForm').addEventListener('submit', function(e) {
       e.preventDefault();
       const name = this.name.value.trim();
       const age = this.age.value.trim();
       const phone = this.phone.value.trim();
       const address = this.address.value.trim();
-      const confirmation = document.getElementById('confirmationMsg');
       const checkedTests = Array.from(document.querySelectorAll('#testDropdown input[name="test"]:checked')).map(cb => cb.value);
       if (checkedTests.length === 0) {
         alert('Please select at least one test.');
-        confirmation.classList.add('hidden');
         return;
       }
       const test = checkedTests.join(', ');
       const datetime = this.datetime.value;
       const msg = `New Booking Request\nName: ${name}\nAge: ${age}\nPhone: ${phone}\nAddress: ${address}\nTest(s): ${test}\nDate: ${datetime}`;
-      confirmation.textContent = 'Thank you! Redirecting to WhatsApp for booking confirmation...';
-      confirmation.classList.remove('hidden');
-      setTimeout(() => {
-        // Try to open WhatsApp Web or App with pre-filled message
-        const waUrl = `https://wa.me/917451945915?text=${encodeURIComponent(msg)}`;
-        const isMobile = /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
-        if (isMobile) {
-          window.location.href = waUrl;
-        } else {
-          window.open(waUrl, '_blank');
-        }
-        confirmation.classList.add('hidden');
-        document.getElementById('bookingForm').reset();
-        updateSelectedTestsText();
-      }, 1500);
+      const waUrl = `https://wa.me/917451945915?text=${encodeURIComponent(msg)}`;
+      window.location.href = waUrl;
+      this.reset();
+      updateSelectedTestsText();
     });
   </script>
 
