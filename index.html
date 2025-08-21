@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rehan & Rahil Diagnostic Lab</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+</head>
+<body class="bg-gray-50 text-gray-900">
+  <!-- Header -->
+  <header class="bg-gradient-to-r from-blue-900 via-blue-800 to-blue-600 text-white py-8 shadow-lg">
+    <div class="container mx-auto px-4 flex flex-col items-center">
+      <div class="flex items-center gap-3 mb-2">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/test-tube.png" alt="Lab Logo" class="w-10 h-10"/>
+        <h1 class="text-4xl font-extrabold tracking-wide drop-shadow text-center">Rehan & Rahil Diagnostic Lab</h1>
+      </div>
+      <p class="text-xl mt-1 text-center italic font-medium tracking-wide">Home Blood Sample Collection Service</p>
+      <button onclick="scrollToBooking()" class="mt-5 px-8 py-3 bg-green-500 hover:bg-green-600 rounded-full text-white font-bold shadow-lg text-lg transition-all duration-200">Book a Test</button>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section class="container mx-auto px-4 py-10" id="about">
+    <div class="bg-white/80 rounded-2xl shadow-xl p-8 flex flex-col md:flex-row gap-8 items-center md:items-start">
+      <div class="flex-1">
+        <h2 class="text-3xl font-bold mb-3 text-blue-900 flex items-center gap-2"><i class="fa-solid fa-flask text-blue-700"></i> About Us</h2>
+        <p class="mb-4 text-lg text-gray-700">Rehan & Rahil Diagnostic Lab offers convenient, reliable, and professional home blood sample collection services. Our experienced team ensures safe and hygienic sample collection at your doorstep, making health checkups easy and stress-free. We are committed to accuracy, compassion, and your well-being.</p>
+        <ul class="mb-4 text-gray-700 space-y-1">
+          <li><i class="fa-solid fa-location-dot text-blue-700 mr-2"></i><span class="font-semibold">Address:</span> Mohalla Khanpura, Meerganj, Bareilly</li>
+          <li><i class="fa-solid fa-phone text-blue-700 mr-2"></i><span class="font-semibold">Contact:</span> <a href="tel:7451945915" class="text-blue-700 hover:underline">7451945915</a></li>
+          <li><i class="fab fa-whatsapp text-green-600 mr-2"></i><span class="font-semibold">WhatsApp Booking:</span> <a href="https://wa.me/917451945915" target="_blank" class="text-green-600 hover:underline">917451945915</a></li>
+        </ul>
+        <div class="flex gap-3 mt-2">
+          <span class="inline-flex items-center gap-1 text-sm text-gray-600"><i class="fa-solid fa-clock text-blue-700"></i> 7:00 AM - 9:00 PM</span>
+          <span class="inline-flex items-center gap-1 text-sm text-gray-600"><i class="fa-solid fa-calendar-days text-blue-700"></i> All Days</span>
+        </div>
+      </div>
+      <div class="flex-1 flex justify-center">
+        <img src="https://img.freepik.com/free-vector/medical-laboratory-concept-illustration_114360-2146.jpg?w=400" alt="Lab Illustration" class="rounded-xl shadow-lg w-full max-w-xs md:max-w-sm"/>
+      </div>
+    </div>
+  </section>
+
+  <!-- Available Tests Section -->
+  <section class="container mx-auto px-4 py-10" id="tests">
+    <div class="mb-4">
+      <input type="text" id="testSearch" placeholder="Search tests..." class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+    </div>
+    <div id="testAccordion">
+      <!-- Accordions will be rendered by JS -->
+    </div>
+</body>
+<script>
+// Test data grouped by category
+const testCategories = [
+  {
+    name: 'Blood Tests',
+    tests: [
+      { name: 'Complete Blood Count (CBC)', price: 300 },
+      { name: 'Hemoglobin (Hb)', price: 120 },
+      { name: 'Blood Sugar (Fasting/PP)', price: 150 },
+      { name: 'Blood Urea', price: 100 },
+      { name: 'Serum Creatinine', price: 150 },
+      { name: 'Uric Acid', price: 120 },
+      { name: 'Calcium', price: 180 },
+      { name: 'ESR', price: 100 },
+      { name: 'CRP', price: 350 },
+      { name: 'Widal Test', price: 200 },
+      { name: 'Dengue NS1 Antigen', price: 600 },
+      { name: 'Malaria Parasite (MP)', price: 250 },
+      { name: 'Typhoid IgM/IgG', price: 400 },
+    ]
+  },
+  {
+    name: 'Profile & Panel',
+    tests: [
+      { name: 'Lipid Profile', price: 600 },
+      { name: 'Liver Function Test (LFT)', price: 500 },
+      { name: 'Kidney Function Test (KFT)', price: 450 },
+      { name: 'Thyroid Profile', price: 400 },
+      { name: 'Electrolytes (Na/K/Cl)', price: 250 },
+      { name: 'HbA1c', price: 350 },
+      { name: 'Urine Routine', price: 100 },
+    ]
+  },
+  {
+    name: 'Cholesterol & Lipids',
+    tests: [
+      { name: 'Total Cholesterol', price: 250 },
+      { name: 'Triglycerides', price: 250 },
+      { name: 'HDL Cholesterol', price: 200 },
+      { name: 'LDL Cholesterol', price: 200 },
+      { name: 'VLDL Cholesterol', price: 200 },
+    ]
+  },
+  {
+    name: 'Liver & Thyroid',
+    tests: [
+      { name: 'SGPT/ALT', price: 200 },
+      { name: 'SGOT/AST', price: 200 },
+      { name: 'TSH', price: 300 },
+      { name: 'T3', price: 200 },
+      { name: 'T4', price: 200 },
+    ]
+  },
+  {
+    name: 'Vitamins',
+    tests: [
+      { name: 'Vitamin D', price: 800 },
+    ]
+  }
+];
+
+function renderAccordion(filtered = null) {
+  const container = document.getElementById('testAccordion');
+  container.innerHTML = '';
+  (filtered || testCategories).forEach((cat, i) => {
+    const panelId = `panel${i}`;
+    const open = i === 0 ? '' : 'hidden';
+    const tests = cat.tests.map(test => {
+      return `<div class="grid grid-cols-12 items-center py-2 border-b last:border-b-0 gap-2">
+        <span class="col-span-7 font-medium text-gray-800">${test.name}</span>
+        <span class="col-span-3 bg-green-100 text-green-700 rounded px-2 py-1 text-sm font-bold text-center">₹${test.price}</span>
+        <button onclick=\"scrollToBooking('${test.name.replace(/'/g, "\\'")}')\" class='col-span-2 px-3 py-1 bg-green-500 hover:bg-green-600 rounded-full text-white text-xs font-semibold shadow transition'>Book</button>
+      </div>`;
+    }).join('');
+    container.innerHTML += `<div class="mb-3 border rounded-lg overflow-hidden">
+        <button type="button" class="w-full flex justify-between items-center px-4 py-3 bg-blue-50 hover:bg-blue-100 font-bold text-blue-900 text-lg focus:outline-none" onclick="document.getElementById('${panelId}').classList.toggle('hidden')">
+          <span>${cat.name}</span>
+          <svg class="w-5 h-5 ml-2 text-blue-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div id="${panelId}" class="bg-white px-4 ${open}">
+          ${tests}
+        </div>
+      </div>`;
+  });
+}
+renderAccordion();
+document.getElementById('testSearch').addEventListener('input', function() {
+  const val = this.value.trim().toLowerCase();
+  if (!val) return renderAccordion();
+  const filtered = testCategories.map(cat => ({
+    name: cat.name,
+    tests: cat.tests.filter(t => t.name.toLowerCase().includes(val))
+  })).filter(cat => cat.tests.length > 0);
+  renderAccordion(filtered);
+});
+</script>
+  </section>
+
+  <!-- Booking Form Section -->
+  <section class="container mx-auto px-4 py-10" id="booking">
+    <h2 class="text-3xl font-bold mb-8 text-blue-900 flex items-center gap-2"><i class="fa-solid fa-calendar-check text-blue-700"></i> Book a Test</h2>
+    <form id="bookingForm" class="bg-white/90 rounded-2xl shadow-xl p-8 max-w-lg mx-auto space-y-5 border border-blue-100">
+      <div>
+        <label class="block font-semibold mb-1 text-blue-900">Full Name</label>
+        <input type="text" name="name" required placeholder="Enter your full name" class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+      </div>
+      <div class="flex gap-4">
+        <div class="flex-1">
+          <label class="block font-semibold mb-1 text-blue-900">Age</label>
+          <input type="number" name="age" min="0" required placeholder="Age" class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+        </div>
+        <div class="flex-1">
+          <label class="block font-semibold mb-1 text-blue-900">Phone Number</label>
+          <input type="text" name="phone" required pattern="[0-9]{10}" maxlength="10" placeholder="10-digit mobile" class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+        </div>
+      </div>
+      <div>
+        <label class="block font-semibold mb-1 text-blue-900">Address</label>
+        <textarea name="address" required placeholder="Full address for sample collection" class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"></textarea>
+      </div>
+      <div class="relative">
+        <label class="block font-semibold mb-2 text-blue-900">Select Test(s)</label>
+        <button type="button" id="testDropdownBtn" class="w-full border rounded-lg px-3 py-2 bg-white text-left flex justify-between items-center focus:outline-none focus:ring-2 focus:ring-blue-400" aria-haspopup="listbox" aria-expanded="false">
+          <span id="selectedTestsText" class="truncate text-gray-700">Select one or more tests</span>
+          <svg class="w-5 h-5 ml-2 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div id="testDropdown" class="absolute left-0 right-0 mt-2 z-20 bg-white border rounded-lg shadow-lg max-h-56 overflow-y-auto hidden">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 p-3">
+            <label class="flex items-center gap-2"><input type="checkbox" name="test" value="Complete Blood Count (CBC)"/> Complete Blood Count (CBC)</label>
+            <label class="flex items-center gap-2"><input type="checkbox" name="test" value="Blood Sugar (Fasting/PP)"/> Blood Sugar (Fasting/PP)</label>
+            <label class="flex items-center gap-2"><input type="checkbox" name="test" value="Lipid Profile"/> Lipid Profile</label>
+            <label class="flex items-center gap-2"><input type="checkbox" name="test" value="Liver Function Test (LFT)"/> Liver Function Test (LFT)</label>
+            <label class="flex items-center gap-2"><input type="checkbox" name="test" value="Kidney Function Test (KFT)"/> Kidney Function Test (KFT)</label>
+            <label class="flex items-center gap-2"><input type="checkbox" name="test" value="Thyroid Profile"/> Thyroid Profile</label>
+            <label class="flex items-center gap-2"><input type="checkbox" name="test" value="Vitamin D"/> Vitamin D</label>
+            <label class="flex items-center gap-2"><input type="checkbox" name="test" value="Hemoglobin (Hb)"/> Hemoglobin (Hb)</label>
+            <label class="flex items-center gap-2"><input type="checkbox" name="test" value="Blood Urea"/> Blood Urea</label>
+            <label class="flex items-center gap-2"><input type="checkbox" name="test" value="Serum Creatinine"/> Serum Creatinine</label>
+            <label class="flex items-center gap-2"><input type="checkbox" name="test" value="Uric Acid"/> Uric Acid</label>
+            <label class="flex items-center gap-2"><input type="checkbox" name="test" value="Calcium"/> Calcium</label>
+            <label class="flex items-center gap-2"><input type="checkbox" name="test" value="SGPT/ALT"/> SGPT/ALT</label>
+            <label class="flex items-center gap-2"><input type="checkbox" name="test" value="SGOT/AST"/> SGOT/AST</label>
+            <label class="flex items-center gap-2"><input type="checkbox" name="test" value="Total Cholesterol"/> Total Cholesterol</label>
+            <label class="flex items-center gap-2"><input type="checkbox" name="test" value="Triglycerides"/> Triglycerides</label>
+            <label class="flex items-center gap-2"><input type="checkbox" name="test" value="HDL Cholesterol"/> HDL Cholesterol</label>
+            <label class="flex items-center gap-2"><input type="checkbox" name="test" value="LDL Cholesterol"/> LDL Cholesterol</label>
+            <label class="flex items-center gap-2"><input type="checkbox" name="test" value="VLDL Cholesterol"/> VLDL Cholesterol</label>
+            <label class="flex items-center gap-2"><input type="checkbox" name="test" value="TSH"/> TSH</label>
+            <label class="flex items-center gap-2"><input type="checkbox" name="test" value="T3"/> T3</label>
+            <label class="flex items-center gap-2"><input type="checkbox" name="test" value="T4"/> T4</label>
+            <label class="flex items-center gap-2"><input type="checkbox" name="test" value="HbA1c"/> HbA1c</label>
+            <label class="flex items-center gap-2"><input type="checkbox" name="test" value="Urine Routine"/> Urine Routine</label>
+            <label class="flex items-center gap-2"><input type="checkbox" name="test" value="Electrolytes (Na/K/Cl)"/> Electrolytes (Na/K/Cl)</label>
+            <label class="flex items-center gap-2"><input type="checkbox" name="test" value="CRP"/> CRP</label>
+            <label class="flex items-center gap-2"><input type="checkbox" name="test" value="ESR"/> ESR</label>
+            <label class="flex items-center gap-2"><input type="checkbox" name="test" value="Widal Test"/> Widal Test</label>
+            <label class="flex items-center gap-2"><input type="checkbox" name="test" value="Dengue NS1 Antigen"/> Dengue NS1 Antigen</label>
+            <label class="flex items-center gap-2"><input type="checkbox" name="test" value="Malaria Parasite (MP)"/> Malaria Parasite (MP)</label>
+            <label class="flex items-center gap-2"><input type="checkbox" name="test" value="Typhoid IgM/IgG"/> Typhoid IgM/IgG</label>
+          </div>
+        </div>
+        <p class="text-xs text-gray-500 mt-1">(Tap to select one or more tests)</p>
+      </div>
+      <div>
+        <label class="block font-semibold mb-1 text-blue-900">Preferred Date & Time</label>
+        <input type="datetime-local" name="datetime" required class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+      </div>
+      <button type="submit" class="w-full py-3 bg-green-500 hover:bg-green-600 rounded-full text-white font-bold text-lg shadow-lg transition">Submit & Book on WhatsApp</button>
+      <div id="confirmationMsg" class="hidden text-green-700 font-semibold text-center mt-4"></div>
+    </form>
+  </section>
+
+  <!-- Google Maps Section -->
+  <section class="container mx-auto px-4 py-10">
+    <h2 class="text-3xl font-bold mb-6 text-blue-900 flex items-center gap-2"><i class="fa-solid fa-map-location-dot text-blue-700"></i> Our Location</h2>
+    <div class="rounded-2xl overflow-hidden shadow-xl border border-blue-100">
+      <iframe src="https://www.google.com/maps?q=28.4952,79.1435&z=17&output=embed" width="100%" height="320" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <div class="mt-2 text-center text-gray-700 font-medium">Mohalla Khanpura, Meerganj, Bareilly</div>
+  </section>
+
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/917451945915" target="_blank" class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-2xl p-4 z-50 flex items-center justify-center text-3xl animate-bounce" aria-label="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- Footer -->
+  <footer class="bg-gradient-to-r from-blue-900 via-blue-800 to-blue-600 text-white text-center py-5 mt-12 shadow-inner">
+    <div class="flex flex-col items-center gap-1">
+      <span>© 2025 Rehan & Rahil Diagnostic Lab</span>
+      <span class="text-xs text-blue-200">All rights reserved. Designed with <i class="fa-solid fa-heart text-red-400"></i> for your health.</span>
+    </div>
+  </footer>
+
+  <script>
+    // Dropdown logic for test selection
+    const testDropdownBtn = document.getElementById('testDropdownBtn');
+    const testDropdown = document.getElementById('testDropdown');
+    const selectedTestsText = document.getElementById('selectedTestsText');
+    function updateSelectedTestsText() {
+      const checked = Array.from(testDropdown.querySelectorAll('input[type="checkbox"]:checked')).map(cb => cb.value);
+      selectedTestsText.textContent = checked.length ? checked.join(', ') : 'Select one or more tests';
+    }
+    if (testDropdownBtn && testDropdown) {
+      testDropdownBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const expanded = !testDropdown.classList.toggle('hidden');
+        testDropdownBtn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+      });
+      testDropdown.addEventListener('click', function(e) {
+        e.stopPropagation();
+      });
+      document.addEventListener('click', function() {
+        testDropdown.classList.add('hidden');
+        testDropdownBtn.setAttribute('aria-expanded', 'false');
+      });
+      testDropdown.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+        cb.addEventListener('change', updateSelectedTestsText);
+      });
+      updateSelectedTestsText();
+    }
+
+    function scrollToBooking(testName) {
+      const bookingSection = document.getElementById('booking');
+      if (testName) {
+        // Open dropdown and check the test
+        if (testDropdown && testDropdownBtn) {
+          testDropdown.classList.remove('hidden');
+          testDropdownBtn.setAttribute('aria-expanded', 'true');
+          // Uncheck all first
+          testDropdown.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+            cb.checked = false;
+          });
+          // Check the one matching testName
+          const match = Array.from(testDropdown.querySelectorAll('input[type="checkbox"]')).find(cb => cb.value === testName);
+          if (match) match.checked = true;
+          updateSelectedTestsText();
+        }
+      }
+      bookingSection.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    document.getElementById('bookingForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = this.name.value.trim();
+      const age = this.age.value.trim();
+      const phone = this.phone.value.trim();
+      const address = this.address.value.trim();
+      const confirmation = document.getElementById('confirmationMsg');
+      const checkedTests = Array.from(document.querySelectorAll('#testDropdown input[name="test"]:checked')).map(cb => cb.value);
+      if (checkedTests.length === 0) {
+        alert('Please select at least one test.');
+        confirmation.classList.add('hidden');
+        return;
+      }
+      const test = checkedTests.join(', ');
+      const datetime = this.datetime.value;
+      const msg = `New Booking Request\nName: ${name}\nAge: ${age}\nPhone: ${phone}\nAddress: ${address}\nTest(s): ${test}\nDate: ${datetime}`;
+      confirmation.textContent = 'Thank you! Redirecting to WhatsApp for booking confirmation...';
+      confirmation.classList.remove('hidden');
+      setTimeout(() => {
+        // Try to open WhatsApp Web or App with pre-filled message
+        const waUrl = `https://wa.me/917451945915?text=${encodeURIComponent(msg)}`;
+        const isMobile = /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
+        if (isMobile) {
+          window.location.href = waUrl;
+        } else {
+          window.open(waUrl, '_blank');
+        }
+        confirmation.classList.add('hidden');
+        document.getElementById('bookingForm').reset();
+        updateSelectedTestsText();
+      }, 1500);
+    });
+  </script>
+
+
